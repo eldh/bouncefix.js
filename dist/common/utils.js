@@ -1,6 +1,6 @@
 /*
  * utils.js
- * 
+ *
  * (C) 2014 Jarid Margolin
  * MIT LICENCE
  *
@@ -49,27 +49,24 @@ utils.isScrollable = function (el) {
 //
 // Keep scrool from hitting end bounds
 //
-utils.scrollToEnd = function (el) {
-  var curPos = el.scrollTop,
-      height = el.offsetHeight,
-      scroll = el.scrollHeight;
-  
-  // If at top, bump down 1px
-  if(curPos <= 0) {
-    el.scrollTop = 1;
-  }
 
+utils.scrollToEnd = function (el) {
+  var curPos = el.scrollTop, height = el.offsetHeight, scroll = el.scrollHeight;
+  // If at top, bump down 1px
+  if (curPos <= 0) {
+    el.fastClickLastScrollTop = el.scrollTop = 1;
+  }
   // If at bottom, bump up 1px
-  if(curPos + height >= scroll) {
-    el.scrollTop = scroll - height - 1;
+  if (curPos + height >= scroll) {
+    el.fastClickLastScrollTop = el.scrollTop = scroll - height - 1;
   }
 };
-
 
 // ----------------------------------------------------------------------------
 // Expose
 // ----------------------------------------------------------------------------
 
 module.exports = utils;
+
 
 
